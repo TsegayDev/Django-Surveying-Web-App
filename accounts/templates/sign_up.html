@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block page_content %}
+{% load static %}
+<main class="">
+  <div class="container-fluid pb-3 mt-5">
+    <div class="row justify-content-center">
+    <div class="col-sm-12 col-xs-12 col-md-5 col-lg-5 col-xl-5 ">
+      <div class="bg-light border rounded-3 p-3 mb-2">
+          <h2 class="fs-3">Sign In</h2>
+      </div>
+      <form method="post">
+        {% csrf_token %}
+      <div class="bg-light border rounded-3 p-4">
+        <div class="form-floating mb-4">
+          <input class="form-control" placeholder="First name" title="First Name" name="input_fname" type="text" id="fname_field" required="required">
+          <label for="fname_field">First Name</label>
+        </div>
+        <div class="form-floating mb-4">
+          <input placeholder="Last name" title="Last Name" name="input_lname" type="text" class="form-control" id="lname_field" required="required">
+          <label for="lname_field">Last Name</label>
+        </div>
+        <div class="form-floating mb-4">
+          <input type="email" class="form-control" placeholder="name@mail.com" title="Email" name="input_email" id="email_field" required="required">
+          <label for="floatingInput">Email address</label>
+        </div>
+        <div class="form-floating mb-4">
+          <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="input_password" >
+          <label for="password_field">Strong Password</label>
+        </div>
+        <div class="form-floating mb-4">
+          <input type="password" class="form-control "placeholder="Retype Password" title="Retype Password" name="input_pass2" id="password_retype" required="required">
+          <label for="password_field">Confirm Password</label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign Up <span class="fa fa-sm fa-arrow-right ms-3"></span> </button>
+        <p class="mt-5 mb-3 text-muted">Have an account? <a href="/accounts/sign_in/" class="link link-primary">Sign In</a></p>
+      </div>
+      </form>
+    </div>
+  </div>
+  </div>
+</main>
+{% endblock %}
