@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block page_content %}
+{% load static %}
+{% include 'header.html' %}
+{% include 'error_section.html' %}
+  <main class="">
+  <div class="container-fluid pb-3">
+  	<div class="row justify-content-center">
+    <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6 col-xl-6 ">
+      <div class="bg-light border rounded-3 p-3 mb-2">
+    	  <h2 class="fs-5">Add Questions</h2>
+      </div>
+      <form method="post">
+        {% csrf_token %}
+      <div class="bg-light border rounded-3 p-4">
+        <div class="mb-4">
+          <label for="question" class="form-label"><span class="fw-bold text-danger">* </span> Enter Question</label>
+          <input name="question" type="text" class="form-control" id="question" placeholder="Write the question here">
+        </div>
+        <div class="mb-4">
+          <label for="questionMode" class="form-label"><span class="fw-bold text-danger">* </span> Question Type </label>
+          <select name="question_mode" class="form-select" aria-label="Select Option" id="questionMode">
+            <option selected>Select One</option>
+            <option value="1">Text Box</option>
+            <option value="2">Single Choice</option>
+            <option value="3">Multiple Choice</option>
+            <option value="4">Location</option>
+          </select>
+        </div>
+        <div class="ms-5 mb-4" id="singleChoice" style="display: none;">
+            <label for="singleChoiceInput" class="form-label"><span class="fw-bold text-danger">* </span> Single Choice</label>
+            <input name="question_mode_single" type="text" class="form-control" id="singleChoiceInput" placeholder="Enter options separated by commas">
+        </div>
+
+        <div class="ms-5 mb-4" id="multipleChoice" style="display: none;">
+            <label for="multipleChoiceInput" class="form-label"><span class="fw-bold text-danger">* </span> Multiple Choice</label>
+            <input name="question_mode_multi" type="text" class="form-control" id="multipleChoiceInput" placeholder="Enter options separated by commas">
+        </div>
+        <div class="mb-4">
+          <label for="questionSection" class="form-label"><span class="fw-bold text-danger">* </span> Select Section/ Category </label>
+          <select name="question_section" class="form-select" aria-label="Select Questionnaire" id="questionSection">
+            <option selected>Select One</option>
+            {% for section in sections %}
+            <option value="{{ section.id }}">{{ section.title }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <button class="btn btn-primary" type="Submit"><span class="fa fa-save me-3"> </span> Submit</button>
+        <button class="btn btn-danger" type="reset">Discard</button>
+      </div>
+      </form>
+    </div>
+  </div>
+  </div>
+</main>
+{% endblock %}

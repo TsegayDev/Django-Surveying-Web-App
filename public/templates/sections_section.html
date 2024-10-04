@@ -1,0 +1,32 @@
+<table class="table table-striped table-hover caption-top">
+    <caption>
+        <div class="row ">
+            <div class="col-5">
+                <h1 class="fs-5  mt-3">Seactions </h1>
+            </div>
+            <div class="col-7 text-end">
+                <a href="/new_section" class="btn btn-sm btn-primary"><span class="fa fa-plus me-3"></span>Add Section</a>
+            </div>
+        </div>
+    </caption>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Subject</th>
+            <th>Created By</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for section in sections %}
+        <tr>
+            <td>{{ section.id }}</td>
+            <td>{{ section.title }}</td>
+            <td>{{ section.description }}</td>
+            <td>{{ section.questionnaire }}</td>
+            <td>{{ section.user }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

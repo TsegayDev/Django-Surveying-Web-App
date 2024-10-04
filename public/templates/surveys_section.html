@@ -1,0 +1,62 @@
+<div class="container-fluid mt-5">
+    <div class="row mb-3">
+            <div class="col-5">
+                <h1 class="fs-5  mt-3">Surveys </h1>
+            </div>
+            <div class="col-7 text-end">
+
+                <div class="btn-group">
+                  <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="fa fa-plus me-3"></span>
+                      Start New Survey
+                    </button>
+                  <ul class="dropdown-menu">
+                    {% for questionnaire in questionnaires %}
+                    <li><a class="dropdown-item" href="/survey/{{ questionnaire.id }}">{{ questionnaire.title }}</a></li>
+                    {% endfor %}
+                  </ul>
+                </div>
+
+
+               <div class="btn-group ms-3">
+                   <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                       <span class="fa fa-save me-3"></span>
+                       Export as
+                   </button>
+                   <ul class="dropdown-menu">
+                       <li><a class="dropdown-item" href="{% url 'export_surveys_pdf' %}"><span class="bi bi-file-pdf me-2"></span>PDF</a></li>
+                       <li><a class="dropdown-item" href="{% url 'export_surveys_excel' %}"><span class="bi bi-file-excel me-2"></span>EXCEL</a></li>
+                       <li><a class="dropdown-item" href="{% url 'export_surveys_json' %}"><span class="bi bi-filetype-json me-2"></span>JSON</a></li>
+                       <li><a class="dropdown-item" href="{% url 'export_surveys_xml' %}"><span class="bi bi-filetype-xml me-2"></span>XML</a></li>
+                   </ul>
+               </div>
+
+
+            </div>
+        </div>
+    {% for survey in surveys %}
+        <div class="card mb-4">
+            <div class="card-header fw-bold">
+                Survey ID -  {{ survey.uuid }}
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Question</th>
+                            <th>Answer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for response in survey.responses.all %}
+                            <tr>
+                                <td>{{ response.question.question }}</td>
+                                <td>{{ response.response }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% endfor %}
+</div>

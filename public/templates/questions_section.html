@@ -1,0 +1,43 @@
+<table class="table table-striped table-hover caption-top">
+    <caption>
+        <div class="row ">
+            <div class="col-5">
+                <h1 class="fs-5  mt-3">Questions </h1>
+            </div>
+            <div class="col-7 text-end">
+                <a href="/new_question" class="btn btn-sm btn-primary"><span class="fa fa-plus me-3"></span>Add Questions</a>
+            </div>
+        </div>
+    </caption>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Question</th>
+            <th>Section</th>
+            <th>Type</th>
+            <th>Created By</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for question in questions %}
+        <tr>
+            <td>{{ question.id }}</td>
+            <td>{{ question.question }}</td>
+            <td>{{ question.section }}</td>
+            <td>
+                {% if question.question_type == 1 %}
+                    Text Box
+                {% elif question.question_type == 2 %}
+                    Single Choice
+                {% elif question.question_type == 3 %}
+                    Multiple Choice
+                {% else %}
+                    Location
+                {% endif %}
+            </td>
+            <td>{{ question.user }}</td>
+
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

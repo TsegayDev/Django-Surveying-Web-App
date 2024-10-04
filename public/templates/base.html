@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{page_title}}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'boxicons-2.1.4/css/boxicons.min.css' %}">
+  <link rel="stylesheet" href="{% static 'bootstrap-icons/bootstrap-icons.min.css' %}">
+  <link rel="stylesheet" href="{% static 'fontawesome/css/all.min.css' %}">
+  <link rel="stylesheet" href="{% static 'bootstrap-5.0.2/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="shortcut icon" href="{% static 'brand/favicon.png' %}" >
+</head>
+<body>
+    {% block page_content %}
+    {% endblock %}
+  <script src="{% static 'js/index.js' %}"></script>
+  <script src="{% static 'bootstrap-5.0.2/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'jquery/jquery-3.7.1.min.js' %}"></script>
+  <script src="{% static 'fontawesome/js/all.min.js' %}"></script>
+</body>
+</html>
